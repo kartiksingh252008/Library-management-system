@@ -1,0 +1,78 @@
+CARDINALITY AND PARTICIPATION
+
+1. CATEGORY → BOOK
+
+Cardinality:
+One-to-Many (1:M)
+
+Explanation:
+One category can contain multiple books.
+Each book belongs to only one category.
+
+----------------------------------------
+
+2. PUBLISHER → BOOK
+
+Cardinality:
+One-to-Many (1:M)
+
+Explanation:
+One publisher can publish multiple books.
+A book belongs to only one publisher.
+
+----------------------------------------
+
+3. MEMBER → BORROW
+
+Cardinality:
+One-to-Many (1:M)
+
+Explanation:
+One member can borrow multiple books over time.
+Each borrow record belongs to one member.
+
+----------------------------------------
+
+4. BOOK → BORROW
+
+Cardinality:
+One-to-Many (1:M)
+
+Explanation:
+One book can appear in multiple borrow transactions.
+Each borrow record is associated with one book.
+
+----------------------------------------
+
+5. LIBRARIAN → BORROW
+
+Cardinality:
+One-to-Many (1:M)
+
+Explanation:
+One librarian can manage multiple borrowing transactions.
+Each borrow transaction is handled by one librarian.
+
+----------------------------------------
+
+6. BORROW → RETURN_BOOK
+
+Cardinality:
+One-to-One (1:1)
+
+Explanation:
+Each borrow transaction has one corresponding return record.
+Each return record refers to only one borrow transaction.
+
+========================================
+
+PARTICIPATION
+
+BOOK:
+Total participation in CATEGORY and PUBLISHER relationships because every book must belong to a category and must have a publisher.
+
+BORROW:
+Total participation in MEMBER, BOOK, and LIBRARIAN relationships because every borrow record must reference a member, a book, and a librarian.
+
+RETURN_BOOK:
+Partial participation because not every borrowed book is returned immediately.

@@ -1,0 +1,44 @@
+CATEGORY
+category_id INT PK
+category_name VARCHAR(50)
+
+PUBLISHER
+publisher_id INT PK
+publisher_name VARCHAR(100)
+city VARCHAR(50)
+contact_no VARCHAR(15)
+
+BOOK
+book_id INT PK
+title VARCHAR(100)
+author VARCHAR(100)
+publication_year INT
+available_copies INT
+publisher_id INT FK
+category_id INT FK
+
+MEMBER
+member_id INT PK
+member_name VARCHAR(100)
+email VARCHAR(100)
+phone VARCHAR(15)
+join_date DATE
+
+LIBRARIAN
+librarian_id INT PK
+librarian_name VARCHAR(100)
+email VARCHAR(100)
+
+BORROW
+borrow_id INT PK
+member_id INT FK
+book_id INT FK
+librarian_id INT FK
+issue_date DATE
+due_date DATE
+
+RETURN_BOOK
+return_id INT PK
+borrow_id INT FK
+return_date DATE
+fine_amount DECIMAL(8,2)

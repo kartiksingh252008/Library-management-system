@@ -1,0 +1,99 @@
+NORMALIZATION
+
+--------------------------------------------------
+UNNORMALIZED FORM (UNF)
+--------------------------------------------------
+
+Book(
+    book_id,
+    title,
+    publisher_name,
+    publisher_city
+)
+
+Problem:
+- Publisher information is repeated for every book.
+- Data redundancy increases storage requirements.
+- Updating publisher details requires changes in multiple rows.
+- This may lead to update, insertion, and deletion anomalies.
+
+--------------------------------------------------
+FIRST NORMAL FORM (1NF)
+--------------------------------------------------
+
+Rule:
+- All attributes must contain atomic (single) values.
+- No repeating groups or multivalued attributes are allowed.
+
+Applied to Library Management System:
+- Each book stores a single title, author, publisher, and category.
+- Each member stores one name, one email, and one phone number.
+- Every table contains atomic values only.
+
+Result:
+The database satisfies First Normal Form (1NF).
+
+--------------------------------------------------
+SECOND NORMAL FORM (2NF)
+--------------------------------------------------
+
+Rule:
+- The table must already be in 1NF.
+- No partial dependency should exist.
+
+Explanation:
+All tables in this project use a single-column primary key
+(book_id, member_id, publisher_id, category_id, etc.).
+
+Therefore, every non-key attribute depends completely on its
+primary key and no partial dependency exists.
+
+Result:
+The database satisfies Second Normal Form (2NF).
+
+--------------------------------------------------
+THIRD NORMAL FORM (3NF)
+--------------------------------------------------
+
+Example Dependency:
+
+book_id  →  publisher_id
+publisher_id  →  publisher_name, publisher_city, contact_no
+
+Problem:
+Publisher details depend on publisher_id rather than directly
+on book_id, creating a transitive dependency if stored together.
+
+Solution:
+Separate the information into different tables.
+
+Publisher(
+    publisher_id,
+    publisher_name,
+    city,
+    contact_no
+)
+
+Book(
+    book_id,
+    title,
+    author,
+    publication_year,
+    available_copies,
+    publisher_id,
+    category_id
+)
+
+Benefits:
+- Eliminates data redundancy
+- Prevents update anomalies
+- Improves consistency
+- Maintains referential integrity using foreign keys
+
+Result:
+No transitive dependencies exist because publisher details are
+stored in the Publisher table and referenced from the Book table.
+Category information is also maintained in a separate Category table.
+
+Hence, the Library Management System database is normalized up to
+Third Normal Form (3NF).
