@@ -1,51 +1,51 @@
--- 1
+
 SELECT * FROM Book;
--- 2
+
 SELECT * FROM Member;
--- 3
+
 SELECT COUNT(*) FROM Book;
--- 4
+
 SELECT category_id,COUNT(*) FROM Book GROUP BY category_id;
--- 5
+
 SELECT category_id,COUNT(*) FROM Book GROUP BY category_id HAVING COUNT(*)>5;
--- 6
+
 SELECT b.title,m.member_name
 FROM Borrow br
 JOIN Book b ON br.book_id=b.book_id
 JOIN Member m ON br.member_id=m.member_id;
--- 7
+
 SELECT * FROM Book WHERE book_id IN (SELECT book_id FROM Borrow);
--- 8
+
 SELECT * FROM Member WHERE member_id IN (SELECT member_id FROM Borrow);
--- 9
+
 SELECT AVG(fine_amount) FROM Return_Book;
--- 10
+
 SELECT MAX(fine_amount) FROM Return_Book;
--- 11
+
 SELECT MIN(fine_amount) FROM Return_Book;
--- 12
+
 SELECT SUM(fine_amount) FROM Return_Book;
--- 13
+
 SELECT * FROM Active_Borrowers;
--- 14
+
 UPDATE Book SET available_copies=12 WHERE book_id=101;
--- 15
+
 DELETE FROM Return_Book WHERE return_id=10;
--- 16
+
 SELECT publisher_id,COUNT(*) FROM Book GROUP BY publisher_id;
--- 17
+
 SELECT * FROM Borrow ORDER BY issue_date;
--- 18
+
 SELECT title FROM Book WHERE available_copies>5;
--- 19
+
 SELECT member_name FROM Member WHERE join_date>'2025-01-15';
--- 20
+
 SELECT DISTINCT category_id FROM Book;
 
 
--- =========================
+
 -- ADDITIONAL DBMS QUERIES
--- =========================
+
 
 -- 1. INNER JOIN
 SELECT b.title, p.publisher_name
